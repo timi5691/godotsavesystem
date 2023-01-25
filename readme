@@ -1,0 +1,4 @@
+my simple save system in godot 4
+this include:
+- save and load form
+- method to save and load game data of objects
