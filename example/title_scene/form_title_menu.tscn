@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=3 uid="uid://o55h2l7ly30l"]
+
+[ext_resource type="Script" path="res://title_scene/form_title_menu.gd" id="1_pgjr8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_grqx5"]
+bg_color = Color(0.17881, 0.17881, 0.17881, 1)
+
+[node name="form_title_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_pgjr8")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_grqx5")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -76.5
+offset_top = -84.0
+offset_right = 76.5
+offset_bottom = 84.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Button_newgame" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "New game"
+
+[node name="Button_continue" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Continue"
+
+[node name="Button_exit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Exit"
+
+[connection signal="pressed" from="VBoxContainer/Button_newgame" to="." method="_on_button_newgame_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button_continue" to="." method="_on_button_continue_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button_exit" to="." method="_on_button_exit_pressed"]

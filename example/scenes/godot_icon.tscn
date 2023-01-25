@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://dr56ap4o7kd76"]
+
+[ext_resource type="Texture2D" uid="uid://dp8kb04mgtip0" path="res://icon.svg" id="1_y4q6p"]
+[ext_resource type="Script" path="res://scenes/godot_icon.gd" id="2_43ksc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5qc43"]
+size = Vector2(22, 22)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tlgwl"]
+radius = 18.0278
+
+[node name="godot_icon" type="CharacterBody2D" groups=["save"]]
+motion_mode = 1
+script = ExtResource("2_43ksc")
+
+[node name="godot_icon_spr" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_y4q6p")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -29.0
+offset_top = -39.0
+offset_right = 57.0
+offset_bottom = -12.0
+scale = Vector2(0.7, 0.7)
+max_value = 500.0
+
+[node name="Label" type="Label" parent="."]
+offset_left = -64.0
+offset_top = 16.0
+offset_right = 64.0
+offset_bottom = 39.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_5qc43")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="body_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="body_area"]
+shape = SubResource("CircleShape2D_tlgwl")
+
+[node name="Timer2" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="body_area" to="." method="_on_body_area_body_entered"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
