@@ -12,7 +12,7 @@
 ######### HOW TO USE ##########
 
 # connect save_game_button_pressed, load_game_button_pressed
-# to a scen. or you can save directly by call save_game(password) to save.
+# to a scene. or you can save directly by call save_game(password) to save.
 # and call laod_game(password) to load default saved game.
 # 
 # to show save form, call: show_save_form()
