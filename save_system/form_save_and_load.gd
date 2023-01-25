@@ -1,10 +1,11 @@
 # every objects want to save must have 
+# var obj_name = "xyz"
 # add_to_group("save")
 #func get_save_properties() -> Dictionary:
 #	return {
 #		"file_path": scene_file_path,
 #		"parent_path": str(get_path()).replace("/" + name, ""),
-#		"name": name,
+#		"obj_name": obj_name,
 #	}
 
 
