@@ -1,0 +1,158 @@
+[gd_scene load_steps=5 format=3 uid="uid://c48bgqh0ji5lo"]
+
+[ext_resource type="Script" path="res://save_system/form_save_and_load.gd" id="1_xytgw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mlnw2"]
+bg_color = Color(0.17881, 0.17881, 0.17881, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ge5a7"]
+bg_color = Color(0.4, 0.4, 0.4, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4gb6a"]
+
+[node name="form_save_and_load" type="Control" groups=["form_save_and_load"]]
+modulate = Color(1, 1, 1, 0.784314)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xytgw")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mlnw2")
+metadata/_edit_use_anchors_ = true
+
+[node name="lb_saved_files" type="Label" parent="."]
+layout_mode = 0
+anchor_left = 0.0625
+anchor_top = 0.03125
+anchor_right = 0.9375
+anchor_bottom = 0.09375
+theme_override_styles/normal = SubResource("StyleBoxFlat_ge5a7")
+text = "Saved list"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ItemList_saved" type="ItemList" parent="."]
+layout_mode = 0
+anchor_left = 0.0625
+anchor_top = 0.125
+anchor_right = 0.9375
+anchor_bottom = 0.5625
+metadata/_edit_use_anchors_ = true
+
+[node name="form_save" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_lock_ = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="form_save"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.046875
+anchor_top = 0.580078
+anchor_right = 0.951172
+anchor_bottom = 0.810547
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4gb6a")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label_input_save_name" type="Label" parent="form_save"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0625
+anchor_top = 0.59375
+anchor_right = 0.9375
+anchor_bottom = 0.644531
+text = "Input new save name"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="save_name_input" type="LineEdit" parent="form_save"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0625
+anchor_top = 0.65625
+anchor_right = 0.9375
+anchor_bottom = 0.716797
+text = "Save1"
+alignment = 1
+caret_blink = true
+caret_blink_interval = 0.5
+metadata/_edit_use_anchors_ = true
+
+[node name="Button_save" type="Button" parent="form_save"]
+modulate = Color(0.623529, 0.682353, 0.239216, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.439453
+anchor_top = 0.730469
+anchor_right = 0.560547
+anchor_bottom = 0.792969
+text = "Save"
+metadata/_edit_use_anchors_ = true
+
+[node name="form_load_game" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_lock_ = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Button_load" type="Button" parent="form_load_game"]
+modulate = Color(0.623529, 0.682353, 0.239216, 1)
+layout_mode = 0
+anchor_left = 0.0625
+anchor_top = 0.71875
+anchor_right = 0.9375
+anchor_bottom = 0.779297
+text = "Load"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button_delete_a_saved" type="Button" parent="form_load_game"]
+modulate = Color(0.623529, 0.682353, 0.239216, 1)
+layout_mode = 0
+anchor_left = 0.0625
+anchor_top = 0.8125
+anchor_right = 0.9375
+anchor_bottom = 0.875
+text = "Delete selected saved"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button_close" type="Button" parent="."]
+modulate = Color(0.623529, 0.682353, 0.239216, 1)
+layout_mode = 0
+anchor_left = 0.0625
+anchor_top = 0.90625
+anchor_right = 0.9375
+anchor_bottom = 0.966797
+text = "close"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="item_clicked" from="ItemList_saved" to="." method="_on_item_list_saved_item_clicked"]
+[connection signal="pressed" from="form_save/Button_save" to="." method="_on_button_save_pressed"]
+[connection signal="pressed" from="form_load_game/Button_load" to="." method="_on_button_load_pressed"]
+[connection signal="pressed" from="form_load_game/Button_delete_a_saved" to="." method="_on_button_delete_a_saved_pressed"]
+[connection signal="pressed" from="Button_close" to="." method="_on_button_close_pressed"]
